@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder, OrdinalEncoder, StandardScaler
 from sklearn.experimental import enable_iterative_imputer 
 from sklearn.impute import IterativeImputer
-from imblearn.over_sampling import RandomOverSampler, SMOTE, ADASYN, SMOTEN, SMOTENC
+#from imblearn.over_sampling import SMOTE
 
 def get_inputs_and_targets(df: pd.DataFrame, target_col):
     input_cols = df.drop(target_col, axis=1).columns
@@ -121,9 +121,9 @@ def preprocess_data(data: pd.DataFrame, oversample = False):
     inputs_train = inputs_train[number_cols + categories_encoded_cols]
     inputs_val = inputs_val[number_cols + categories_encoded_cols]
 
-    if oversample:
-        samplerObj = SMOTE(random_state=12)
-        inputs_train, targets_train = samplerObj.fit_resample(inputs_train, targets_train)
+    #if oversample:
+    #    samplerObj = SMOTE(random_state=12)
+    #    inputs_train, targets_train = samplerObj.fit_resample(inputs_train, targets_train)
     
     return {
         'inputs_train': inputs_train,
