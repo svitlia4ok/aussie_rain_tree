@@ -6,12 +6,8 @@ from scripts.aussie_rain import *
 
 def predict(humidity3pm, rainfall, sunshine, pressure3pm, cloud3pm, windgustspeed, windSpeed3pm, date):
     model = joblib.load('model/aussie_rain_thin.joblib')
-    st.write(joblib.__version__)
-    #model_params = joblib.load('model/add_data.joblib')
-    print([humidity3pm, rainfall, sunshine, pressure3pm, cloud3pm, windgustspeed, windSpeed3pm, date])
-    return 1
+    model_params = joblib.load('model/add_data.joblib')
     data = np.expand_dims(np.array([humidity3pm, rainfall, sunshine, pressure3pm, cloud3pm, windgustspeed, windSpeed3pm, date]), axis=0)
-    print(data)
     user_data = pd.DataFrame(data, columns = model_params['columns'])
     user_data_preprocessed = preprocess_new_data(user_data, model_params['scaler'])  
     predictions = model.predict(user_data_preprocessed)   
