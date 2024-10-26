@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from sklearn.base import BaseEstimator
+#from sklearn.base import BaseEstimator
 from typing import List, Dict, Any
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder, OrdinalEncoder, StandardScaler
@@ -14,7 +14,7 @@ def get_inputs_and_targets(df: pd.DataFrame, target_col):
     targets = df[target_col].copy()
     return inputs, targets
 
-def scaleInputs(scalerObj: BaseEstimator, inputs_train: pd.DataFrame, inputs_val: pd.DataFrame, number_cols_to_scale: List[str]) -> Dict[str, pd.DataFrame]:
+def scaleInputs(scalerObj, inputs_train: pd.DataFrame, inputs_val: pd.DataFrame, number_cols_to_scale: List[str]) -> Dict[str, pd.DataFrame]:
     """
     Масштабує числові колонки вхідних даних.
 
@@ -36,7 +36,7 @@ def scaleInputs(scalerObj: BaseEstimator, inputs_train: pd.DataFrame, inputs_val
         'scalerObj': scalerObj
     }
 
-def imputInputs(imputerObj: BaseEstimator, inputs_train: pd.DataFrame, inputs_val: pd.DataFrame, number_cols_to_imput: List[str]) -> Dict[str, pd.DataFrame]:
+def imputInputs(imputerObj, inputs_train: pd.DataFrame, inputs_val: pd.DataFrame, number_cols_to_imput: List[str]) -> Dict[str, pd.DataFrame]:
     """
     Масштабує числові колонки вхідних даних.
 
@@ -57,7 +57,7 @@ def imputInputs(imputerObj: BaseEstimator, inputs_train: pd.DataFrame, inputs_va
         'inputs_val': inputs_val
     }
 
-def encodeInputs(encoderObj: BaseEstimator, categorical_cols: List[str], inputs_train: pd.DataFrame, inputs_val: pd.DataFrame) -> Dict[str, Any]:
+def encodeInputs(encoderObj, categorical_cols: List[str], inputs_train: pd.DataFrame, inputs_val: pd.DataFrame) -> Dict[str, Any]:
     """
     Кодує категоріальні колонки вхідних даних.
 
