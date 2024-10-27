@@ -137,14 +137,3 @@ def preprocess_data(data: pd.DataFrame, oversample = False):
         'categorical_cols': categorical_cols,
         'number_cols_to_scale': number_cols_to_scale
     }
-
-
-def preprocess_new_data(data: pd.DataFrame, scalerObj):
-    df = data.copy()
-    df['datetime'] = pd.to_datetime(df.Date)
-    df['month'] = df.datetime.dt.month
-    df.drop(columns=['Date', 'datetime'], inplace=True)
-    number_cols = df.columns.to_list()
-    df[number_cols] = scalerObj.transform(df)
-    
-    return df

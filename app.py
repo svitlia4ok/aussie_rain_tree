@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 import numpy as np
 import pandas as pd
-from scripts.aussie_rain import *
+from scripts.aussie_rain_process_user_data import *
 
 def predict(humidity3pm, rainfall, sunshine, pressure3pm, cloud3pm, windgustspeed, windSpeed3pm, date):
     model = joblib.load('model/aussie_rain_thin.joblib')
