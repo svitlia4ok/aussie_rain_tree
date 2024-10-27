@@ -7,7 +7,7 @@ from scripts.aussie_rain import *
 def predict(humidity3pm, rainfall, sunshine, pressure3pm, cloud3pm, windgustspeed, windSpeed3pm, date):
     model = joblib.load('model/aussie_rain_thin.joblib')
     model_params = joblib.load('model/add_data.joblib')
-    data = np.expand_dims(np.array([humidity3pm, rainfall, sunshine, pressure3pm, cloud3pm, windgustspeed, windSpeed3pm, date]), axis=0)
+    data = np.expand_dims(np.array([humidity3pm, rainfall, sunshine, pressure3pm, cloud3pm, windgustspeed, date, windSpeed3pm]), axis=0)
     user_data = pd.DataFrame(data, columns = model_params['columns'])
     user_data_preprocessed = preprocess_new_data(user_data, model_params['scaler'])  
     predictions = model.predict(user_data_preprocessed)   
@@ -18,6 +18,7 @@ st.markdown('Дана модель передбачає ймовірність �
 st.image('images/autumn.jpg')
 st.header('Параметри погоди')
 col1, col2 = st.columns(2)
+st.write()
 with col1:
     st.text('Характеристики о 3 p.m.')
     humidity3pm = st.slider('Вологість 3 p.m.', 0, 100)
