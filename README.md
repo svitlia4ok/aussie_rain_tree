@@ -29,3 +29,4 @@ Libraries and Tools Used
 	•	Decision Tree Classifier: Used for straightforward, interpretable classification.
 	•	ROC AUC Score: Evaluates model accuracy in binary classification tasks.
 	•	SMOTE (Synthetic Minority Oversampling Technique): Balances the dataset by creating synthetic samples for the minority class.
+Project is deployed here https://aussie-rain-tree2.streamlit.app/
